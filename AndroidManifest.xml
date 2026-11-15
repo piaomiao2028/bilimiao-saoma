@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.a10miaomiao.bilimiao.scan"
+    android:versionCode="4"
+    android:versionName="1.0">
+
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <queries>
+        <package android:name="cn.a10miaomiao.bilimiao.scanner" />
+        <package android:name="com.google.android.gms" />
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
+
+    <application android:label="@string/app_name" android:hasCode="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher">
+        <activity
+            android:name=".ScannerActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <meta-data android:name="xposedmodule" android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="底栏扫码按钮：相机扫码 + 相册识别 + 扫码登录，结果直接跳哔哩喵" />
+        <meta-data android:name="xposedminversion" android:value="54" />
+        <meta-data android:name="xposedscope" android:resource="@array/xposedscope" />
+    </application>
+</manifest>
