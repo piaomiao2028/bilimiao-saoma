@@ -6,6 +6,21 @@
 > 目标应用包名：`com.a10miaomiao.bilimiao`
 > 模块包名：`cn.a10miaomiao.bilimiao.scan`
 
+## 来源说明
+
+本项目是**在原作者的源代码基础上修改而来**，不是从零重写。
+
+上游项目：[10miaomiao/bilimiao_scanner](https://github.com/10miaomiao/bilimiao_scanner) —— 哔哩喵扫码器插件（原作者 [10miaomiao](https://github.com/10miaomiao)）。
+
+相对上游的主要改动：
+
+- 上游是 Kotlin + Gradle 的独立插件工程；本项目改为纯 Java，用 `build.sh`（javac → d8 → aapt2 → apksigner）命令行构建，不依赖 Gradle。
+- 扫码入口从「宿主插件」改为模块自己挂到哔哩喵底栏，同时保留对上游 `bilimiao.plugin.ACTION_SCAN_QRCODE` 的兼容兜底。
+- 新增相册识别（SAF 选图 + ZXing 多方向 / 反色解码）与扫码登录确认。
+- 解码库沿用 ZXing 3.5.3。
+
+上游代码的著作权归原作者，本项目按 GPL-3.0 继续开源。
+
 ## 功能
 
 - **底栏扫码图标**：和「首页 / 动态 / 搜索」同排，20dp 图标 + 「扫码」小字，颜色跟随深浅色主题；位置按底栏原生图标行/文字行对齐。
